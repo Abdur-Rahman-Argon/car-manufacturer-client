@@ -1,7 +1,11 @@
 import React from "react";
 import { useForm } from "react-hook-form";
+import { useSignInWithGoogle } from "react-firebase-hooks/auth";
+import auth from "../../../firebase.init";
 
 const LogIn = () => {
+  const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
+
   const {
     register,
     formState: { errors },
@@ -44,7 +48,12 @@ const LogIn = () => {
       </div>
       <div class="divider">OR</div>
       <div>
-        <button class="btn btn-outline   w-full">SIgn In With Google</button>
+        <button
+          onClick={() => signInWithGoogle()}
+          class="btn btn-outline   w-full"
+        >
+          SIgn In With Google
+        </button>
       </div>
     </div>
   );
