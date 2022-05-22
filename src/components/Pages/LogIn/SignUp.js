@@ -6,6 +6,7 @@ import {
   useUpdateProfile,
 } from "react-firebase-hooks/auth";
 import auth from "../../../firebase.init";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 const SignUp = () => {
   const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
@@ -13,8 +14,12 @@ const SignUp = () => {
   const [createUserWithEmailAndPassword, user, loading, error] =
     useCreateUserWithEmailAndPassword(auth);
 
+  const navigate = useNavigate();
+  const location = useLocation();
+  let from = location.state?.from?.pathname || "/";
+
   if (user) {
-    console.log(user);
+    navigate(from, { replace: true });
   }
 
   const [updateProfile, updating, updateError] = useUpdateProfile(auth);
@@ -111,6 +116,15 @@ const SignUp = () => {
             />
           </div>
         </form>
+      </div>
+      <div>
+        <p>
+          Have Account
+          <Link to="/login" className="font-semibold text-green-600">
+            {" "}
+            Log In?
+          </Link>
+        </p>
       </div>
       <div class="divider">OR</div>
       <div>
