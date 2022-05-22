@@ -24,7 +24,7 @@ const Navber = () => {
         <Link to="/">Profile</Link>
       </li>
       <li className="mx-2 my-2">
-        <Link to="/">Log In</Link>
+        <Link to="/login">Log In</Link>
       </li>
     </>
   );
