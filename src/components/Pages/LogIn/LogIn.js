@@ -1,10 +1,17 @@
 import React from "react";
 import { useForm } from "react-hook-form";
-import { useAuthState, useSignInWithGoogle } from "react-firebase-hooks/auth";
+import {
+  useAuthState,
+  useSignInWithEmailAndPassword,
+  useSignInWithGoogle,
+} from "react-firebase-hooks/auth";
 import auth from "../../../firebase.init";
 
 const LogIn = () => {
-  const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
+  const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
+
+  const [signInWithEmailAndPassword, user, loading, error] =
+    useSignInWithEmailAndPassword(auth);
 
   if (user) {
     console.log(user);
@@ -16,7 +23,12 @@ const LogIn = () => {
     handleSubmit,
   } = useForm();
 
-  const onSubmit = (data) => console.log(data);
+  const onSubmit = (data) => {
+    const email = data.email;
+    const password = data.password;
+    signInWithEmailAndPassword(email, password);
+    console.log(data);
+  };
 
   return (
     <div className="card w-96 bg-base-100 shadow-2xl mx-auto p-8">
