@@ -1,17 +1,23 @@
 import React from "react";
 import { useForm } from "react-hook-form";
-import { useSignInWithGoogle } from "react-firebase-hooks/auth";
+import { useAuthState, useSignInWithGoogle } from "react-firebase-hooks/auth";
 import auth from "../../../firebase.init";
 
 const LogIn = () => {
   const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
+
+  if (user) {
+    console.log(user);
+  }
 
   const {
     register,
     formState: { errors },
     handleSubmit,
   } = useForm();
+
   const onSubmit = (data) => console.log(data);
+
   return (
     <div className="card w-96 bg-base-100 shadow-2xl mx-auto p-8">
       <div>

@@ -1,7 +1,11 @@
 import React from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
 import { Link } from "react-router-dom";
+import auth from "../../../firebase.init";
 
 const Navber = () => {
+  const [user, loading, error] = useAuthState(auth);
+
   const menu = (
     <>
       <li className="mx-2 my-2">
@@ -20,12 +24,15 @@ const Navber = () => {
         <Link to="/">About</Link>
       </li>
 
-      <li className="mx-2 my-2">
-        <Link to="/">Profile</Link>
-      </li>
-      <li className="mx-2 my-2">
-        <Link to="/login">Log In</Link>
-      </li>
+      {user ? (
+        <li className="mx-2 my-2">
+          <Link to="/profile">Profile</Link>
+        </li>
+      ) : (
+        <li className="mx-2 my-2">
+          <Link to="/login">Log In</Link>
+        </li>
+      )}
     </>
   );
 
