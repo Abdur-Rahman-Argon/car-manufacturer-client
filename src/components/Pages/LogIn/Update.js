@@ -1,17 +1,18 @@
 import React from "react";
-import { useAuthState } from "react-firebase-hooks/auth";
+import { useAuthState, useUpdateProfile } from "react-firebase-hooks/auth";
 import { signOut } from "firebase/auth";
 import auth from "../../../firebase.init";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
 
-const Profile = () => {
+const Update = () => {
   const [user, loading, error] = useAuthState(auth);
   const { displayName, email, phoneNumber, photoURL } = user;
 
   if (user) {
     console.log(user);
   }
+  const [updateProfile, updating, updateError] = useUpdateProfile(auth);
+
   const {
     register,
     formState: { errors },
@@ -19,8 +20,10 @@ const Profile = () => {
   } = useForm();
 
   const onSubmit = (data) => {
-    const email = data.email;
-    const password = data.password;
+    const displayName = data.displayName;
+    const photoURL = data.photoURL;
+    const phoneNumber = data.phoneNumber;
+    updateProfile({ displayName, photoURL, phoneNumber });
   };
 
   return (
@@ -38,10 +41,9 @@ const Profile = () => {
             <br />
             <input
               {...register("name", { required: true })}
-              value={`${displayName}`}
+              placeholder="Enter displayName"
               id="name"
               class="input input-bordered w-full max-w-xs"
-              readOnly
             />
           </div>
           <div className="text-left my-3">
@@ -60,13 +62,12 @@ const Profile = () => {
             <br />
             <input
               {...register("phone", { required: true })}
-              value={`${phoneNumber}`}
+              placeholder="phoneNumber"
               id="phone"
               class="input input-bordered w-full max-w-xs"
-              readOnly
             />
           </div>
-          {/* <div className="text-left my-3">
+          <div className="text-left my-3">
             <label htmlFor="img">Photo Url</label>
             <br />
             <input
@@ -74,25 +75,20 @@ const Profile = () => {
               placeholder="Enter Photo URL"
               id="img"
               class="input input-bordered w-full max-w-xs"
-              readOnly
             />
-          </div> */}
+          </div>
 
           <div className="text-left my-3">
-            <Link to="/profile" className="btn btn-success w-full max-w-xs">
-              Update
-            </Link>
+            <input
+              type="submit"
+              value="Update"
+              className="btn btn-success w-full max-w-xs"
+            />
           </div>
         </form>
-        <div class="divider">OR</div>
-        <div>
-          <button onClick={() => signOut(auth)} class="btn btn-primary w-full">
-            Log Out
-          </button>
-        </div>
       </div>
     </div>
   );
 };
 
-export default Profile;
+export default Update;

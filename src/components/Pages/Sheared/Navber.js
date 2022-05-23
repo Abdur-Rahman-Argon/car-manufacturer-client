@@ -1,6 +1,7 @@
 import React from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { Link } from "react-router-dom";
+import { signOut } from "firebase/auth";
 import auth from "../../../firebase.init";
 
 const Navber = () => {
@@ -12,7 +13,7 @@ const Navber = () => {
         <Link to="/">Home</Link>
       </li>
       <li className="mx-2 my-2">
-        <Link to="/">services</Link>
+        <Link to="/allparts">All Parts</Link>
       </li>
       <li className="mx-2 my-2">
         <Link to="/purchase">Purchase</Link>
@@ -23,10 +24,21 @@ const Navber = () => {
       <li className="mx-2 my-2">
         <Link to="/">About</Link>
       </li>
+      {user && (
+        <li className="mx-2 my-2">
+          <Link to="/dashboard">Dashboard</Link>
+        </li>
+      )}
+
+      {user && (
+        <li className="mx-2 my-2">
+          <Link to="/profile">My Profile</Link>
+        </li>
+      )}
 
       {user ? (
         <li className="mx-2 my-2">
-          <Link to="/profile">Profile</Link>
+          <button onClick={() => signOut(auth)}>LogOut</button>
         </li>
       ) : (
         <li className="mx-2 my-2">

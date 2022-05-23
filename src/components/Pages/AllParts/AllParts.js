@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from "react";
-import Footer from "../Sheared/Footer";
-import Banner from "./Banner";
-import PartsDetail from "./PartsDetail";
+import PartsDetail from "../Home/PartsDetail";
 
-const Home = () => {
+const AllParts = () => {
   const [parts, setParts] = useState([]);
   useEffect(() => {
     fetch("parts.json")
@@ -12,15 +10,13 @@ const Home = () => {
   }, []);
   return (
     <div>
-      <Banner></Banner>
       <div className="m-0 grid grid-cols-1 lg:grid-cols-3 gap-5">
         {parts.map((part) => (
           <PartsDetail key={part._id} part={part}></PartsDetail>
         ))}
       </div>
-      <Footer></Footer>
     </div>
   );
 };
 
-export default Home;
+export default AllParts;

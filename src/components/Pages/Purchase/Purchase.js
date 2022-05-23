@@ -1,20 +1,9 @@
-import React, { useEffect, useState } from "react";
-import PartsDetail from "../Home/PartsDetail";
+import React from "react";
 
 const Purchase = () => {
-  const [parts, setParts] = useState([]);
-  useEffect(() => {
-    fetch("parts.json")
-      .then((res) => res.json())
-      .then((data) => setParts(data));
-  }, []);
   return (
     <div>
-      <div className="m-0 grid grid-cols-1 lg:grid-cols-3 gap-5">
-        {parts.map((part) => (
-          <PartsDetail key={part._id} part={part}></PartsDetail>
-        ))}
-      </div>
+      <h1>Our Parchese here</h1>
     </div>
   );
 };
