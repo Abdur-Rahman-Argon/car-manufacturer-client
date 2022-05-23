@@ -16,7 +16,8 @@ const SignUp = () => {
 
   const navigate = useNavigate();
   const location = useLocation();
-  let from = location.state?.from?.pathname || "/";
+
+  const from = location?.state?.from?.pathname || "/";
 
   if (user) {
     navigate(from, { replace: true });
@@ -121,7 +122,6 @@ const SignUp = () => {
         <p>
           Have Account
           <Link to="/login" className="font-semibold text-green-600">
-            {" "}
             Log In?
           </Link>
         </p>

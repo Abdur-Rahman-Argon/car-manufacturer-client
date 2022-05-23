@@ -11,14 +11,16 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 const LogIn = () => {
   const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
 
-  const [signInWithEmailAndPassword, user, loading, error] =
+  const [signInWithEmailAndPassword, LUser, loading, error] =
     useSignInWithEmailAndPassword(auth);
 
+  const [user] = useAuthState(auth);
   const navigate = useNavigate();
   const location = useLocation();
-  let from = location.state?.from?.pathname || "/";
 
-  if (user) {
+  const from = location?.state?.from?.pathname || "/";
+
+  if (user || LUser) {
     navigate(from, { replace: true });
   }
 

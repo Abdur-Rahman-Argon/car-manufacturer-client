@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
-import Banner from "./Banner";
-import PartsDetail from "./PartsDetail";
+import PartsDetail from "../Home/PartsDetail";
 
-const Home = () => {
+const Purchase = () => {
   const [parts, setParts] = useState([]);
   useEffect(() => {
     fetch("parts.json")
@@ -11,7 +10,6 @@ const Home = () => {
   }, []);
   return (
     <div>
-      <Banner></Banner>
       <div className="m-0 grid grid-cols-1 lg:grid-cols-3 gap-5">
         {parts.map((part) => (
           <PartsDetail key={part._id} part={part}></PartsDetail>
@@ -21,4 +19,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default Purchase;

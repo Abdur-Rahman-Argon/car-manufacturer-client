@@ -7,6 +7,7 @@ import SignUp from "./components/Pages/LogIn/SignUp";
 import LogIn from "./components/Pages/LogIn/LogIn";
 import Profile from "./components/Pages/LogIn/Profile";
 import RequreAuth from "./components/Pages/Sheared/RequreAuth";
+import Purchase from "./components/Pages/Purchase/Purchase";
 
 function App() {
   return (
@@ -16,6 +17,14 @@ function App() {
         <Route path="/" element={<Home></Home>}></Route>
         <Route path="/signup" element={<SignUp></SignUp>}></Route>
         <Route path="/login" element={<LogIn></LogIn>}></Route>
+        <Route
+          path="/purchase"
+          element={
+            <RequreAuth>
+              <Purchase></Purchase>
+            </RequreAuth>
+          }
+        ></Route>
         <Route
           path="/profile"
           element={

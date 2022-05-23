@@ -1,0 +1,65 @@
+[
+  {
+    "_id": 1,
+    "img": "https://red-parts.angular.themeforest.scompiler.ru/themes/blue/assets/images/products/product-4-1.jpg",
+    "name": "Glossy Gray  Aluminium",
+    "description": "Many philosophical debates that began in ancient times are still debated today. In one general sense, philosophy is associated with wisdom, intellectual culture and a search for knowledge.",
+    "minimumOrder": "500",
+    "AvailableStock": "18700",
+    "Price": "1260"
+  },
+  {
+    "_id": 2,
+    "img": "https://red-parts.angular.themeforest.scompiler.ru/themes/blue/assets/images/products/product-4-1.jpg",
+    "name": "Glossy Gray  Aluminium",
+    "description": "Many philosophical debates that began in ancient times are still debated today. In one general sense, philosophy is associated with wisdom, intellectual culture and a search for knowledge.",
+    "minimumOrder": "500",
+    "AvailableStock": "18700",
+    "Price": "1260"
+  },
+  {
+    "_id": 3,
+    "img": "https://red-parts.angular.themeforest.scompiler.ru/themes/blue/assets/images/products/product-4-1.jpg",
+    "name": "Glossy Gray  Aluminium",
+    "description": "Many philosophical debates that began in ancient times are still debated today. In one general sense, philosophy is associated with wisdom, intellectual culture and a search for knowledge.",
+    "minimumOrder": "500",
+    "AvailableStock": "18700",
+    "Price": "1260"
+  },
+  {
+    "_id": 4,
+    "img": "https://red-parts.angular.themeforest.scompiler.ru/themes/blue/assets/images/products/product-4-1.jpg",
+    "name": "Glossy Gray  Aluminium",
+    "description": "Many philosophical debates that began in ancient times are still debated today. In one general sense, philosophy is associated with wisdom, intellectual culture and a search for knowledge.",
+    "minimumOrder": "500",
+    "AvailableStock": "18700",
+    "Price": "1260"
+  },
+  {
+    "_id": 5,
+    "img": "https://red-parts.angular.themeforest.scompiler.ru/themes/blue/assets/images/products/product-4-1.jpg",
+    "name": "Glossy Gray  Aluminium",
+    "description": "Many philosophical debates that began in ancient times are still debated today. In one general sense, philosophy is associated with wisdom, intellectual culture and a search for knowledge.",
+    "minimumOrder": "500",
+    "AvailableStock": "18700",
+    "Price": "1260"
+  },
+  {
+    "_id": 6,
+    "img": "https://red-parts.angular.themeforest.scompiler.ru/themes/blue/assets/images/products/product-4-1.jpg",
+    "name": "Glossy Gray  Aluminium",
+    "description": "Many philosophical debates that began in ancient times are still debated today. In one general sense, philosophy is associated with wisdom, intellectual culture and a search for knowledge.",
+    "minimumOrder": "500",
+    "AvailableStock": "18700",
+    "Price": "1260"
+  },
+  {
+    "_id": 7,
+    "img": "https://red-parts.angular.themeforest.scompiler.ru/themes/blue/assets/images/products/product-4-1.jpg",
+    "name": "Glossy Gray  Aluminium",
+    "description": "Many philosophical debates that began in ancient times are still debated today. In one general sense, philosophy is associated with wisdom, intellectual culture and a search for knowledge.",
+    "minimumOrder": "500",
+    "AvailableStock": "18700",
+    "Price": "1260"
+  }
+]
