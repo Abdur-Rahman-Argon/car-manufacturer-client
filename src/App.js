@@ -10,7 +10,7 @@ import RequreAuth from "./components/Pages/Sheared/RequreAuth";
 
 function App() {
   return (
-    <div className="App">
+    <div className="p-1 max-w-7xl mx-auto">
       <Navber></Navber>
       <Routes>
         <Route path="/" element={<Home></Home>}></Route>

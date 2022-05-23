@@ -37,7 +37,7 @@ const Navber = () => {
   );
 
   return (
-    <div class="navbar bg-base-100">
+    <div class="navbar bg-base-100 bg-slate-100">
       <div class="navbar-start">
         <div class="dropdown">
           <label tabindex="0" class="btn btn-ghost lg:hidden">
@@ -62,7 +62,11 @@ const Navber = () => {
             {menu}
           </ul>
         </div>
-        <a class="btn btn-ghost normal-case text-xl">daisyUI</a>
+        <h1>
+          <Link to="/" className="text-2xl font-bold text-purple-600">
+            Car manufacturering Industry
+          </Link>
+        </h1>
       </div>
       <div class="navbar-center hidden lg:flex">
         <ul class="menu menu-horizontal p-0">{menu}</ul>
