@@ -24,8 +24,10 @@ const MyOrder = () => {
 
   return (
     <div>
-      <h2>My all order here </h2>
-      {orders.map((order) => (
+      <h1 className="text-2xl font-bold text-center text-purple-700 my-4">
+        Your All Orders Here
+      </h1>
+      {orders?.map((order) => (
         <Orders key={order._id} order={order}></Orders>
       ))}
     </div>

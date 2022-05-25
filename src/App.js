@@ -20,6 +20,7 @@ import ManageAllOrders from "./components/Pages/Dashboard/ManageAllOrders";
 import AddProduct from "./components/Pages/Dashboard/AddProduct";
 import RequreAdmin from "./components/Pages/Sheared/RequreAdmin";
 import NotFound from "./components/Pages/Sheared/NotFound";
+import Payment from "./components/Pages/Dashboard/Payment";
 
 function App() {
   return (
@@ -48,15 +49,12 @@ function App() {
         >
           <Route index element={<MyOrder></MyOrder>}></Route>
           <Route path="review" element={<AddReview></AddReview>}></Route>
+          <Route path="payment/:id" element={<Payment></Payment>}></Route>
           <Route path="makeadmin" element={<MakeAdmin></MakeAdmin>}></Route>
           <Route path="addproduct" element={<AddProduct></AddProduct>}></Route>
           <Route
             path="manageproduct"
-            element={
-              <RequreAdmin>
-                <ManageProducts></ManageProducts>
-              </RequreAdmin>
-            }
+            element={<ManageProducts></ManageProducts>}
           ></Route>
           <Route
             path="manageallorder"

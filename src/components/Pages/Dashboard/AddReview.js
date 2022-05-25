@@ -39,6 +39,9 @@ const AddReview = () => {
   };
   return (
     <div class="card w-96 bg-base-100 shadow-xl mx-auto p-9">
+      <h1 className="text-2xl font-bold text-center text-purple-900 my-4">
+        Please Give Us Review
+      </h1>
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="text-left my-3">
           <div class="form-control w-full max-w-xs">

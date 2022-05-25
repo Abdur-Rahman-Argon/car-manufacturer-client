@@ -1,7 +1,8 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Orders = ({ order }) => {
-  const { img, ordersCountity, Price, productName } = order;
+  const { _id, img, ordersCountity, Price, paid, productName } = order;
   return (
     <div className="card p-8 bg-base-100 shadow-xl m-1 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 my-5 mx-auto items-center">
       <div className="w-96">
@@ -17,10 +18,20 @@ const Orders = ({ order }) => {
         </div>
       </div>
       <div className="w-96 my-2 text-center">
-        <button class="btn btn-active btn-primary mx-auto ">Pay Now</button>
+        {Price ? (
+          <Link to={`/dashboard/payment/${_id}`}>
+            <button class="btn btn-active btn-primary mx-auto ">Pay Now</button>
+          </Link>
+        ) : (
+          <button class="btn btn-active btn-primary mx-auto "> Paid </button>
+        )}
       </div>
       <div className="w-96 my-2 text-center">
-        <button class="btn w-20 btn-active btn-warning mx-auto ">Remove</button>
+        {Price && (
+          <button class="btn w-20 btn-active btn-warning mx-auto ">
+            Remove
+          </button>
+        )}
       </div>
     </div>
   );

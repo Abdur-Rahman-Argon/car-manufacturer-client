@@ -78,7 +78,7 @@ const Navber = () => {
         </div>
         <h1>
           <Link to="/" className="text-2xl font-bold text-purple-600">
-            Car manufacturering Industry
+            Car Parts Industry
           </Link>
         </h1>
       </div>

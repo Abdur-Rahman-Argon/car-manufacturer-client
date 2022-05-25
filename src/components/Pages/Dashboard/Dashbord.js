@@ -13,9 +13,9 @@ const Dashbord = () => {
       <div class="drawer-content flex flex-col">
         <label
           for="my-drawer-2"
-          class="btn btn-primary drawer-button lg:hidden"
+          class="btn w-full btn-primary drawer-button lg:hidden"
         >
-          Open drawer
+          Open side Nave
         </label>
 
         <Outlet></Outlet>
@@ -23,32 +23,36 @@ const Dashbord = () => {
       <div class="drawer-side">
         <label for="my-drawer-2" class="drawer-overlay"></label>
         <ul class="menu p-4 overflow-y-auto w-80 bg-base-100 text-base-content">
-          <li className="my-2">
-            <Link to="/dashboard">My Orders</Link>
-          </li>
-          <li className="my-2">
-            <Link to="/dashboard/review">Add review</Link>
-          </li>
+          {admin && (
+            <>
+              {" "}
+              <li className="my-2">
+                <Link to="/dashboard">My Orders</Link>
+              </li>
+              <li className="my-2">
+                <Link to="/dashboard/review">Add review</Link>
+              </li>
+            </>
+          )}
 
           {admin && (
-            <li className="my-2">
-              <Link to="/dashboard/addproduct">Add A Product</Link>
-            </li>
-          )}
-          {admin && (
-            <li className="my-2">
-              <Link to="/dashboard/makeadmin">Make Admin</Link>
-            </li>
-          )}
-          {admin && (
-            <li className="my-2">
-              <Link to="/dashboard/manageproduct">Manage Products</Link>
-            </li>
-          )}
-          {admin && (
-            <li className="my-2">
-              <Link to="/dashboard/manageallorder">Manage All Orders</Link>
-            </li>
+            <>
+              <li className="my-2">
+                <Link to="/dashboard/addproduct">Add A Product</Link>
+              </li>
+
+              <li className="my-2">
+                <Link to="/dashboard/makeadmin">Make Admin</Link>
+              </li>
+
+              <li className="my-2">
+                <Link to="/dashboard/manageproduct">Manage Products</Link>
+              </li>
+
+              <li className="my-2">
+                <Link to="/dashboard/manageallorder">Manage All Orders</Link>
+              </li>
+            </>
           )}
         </ul>
       </div>
