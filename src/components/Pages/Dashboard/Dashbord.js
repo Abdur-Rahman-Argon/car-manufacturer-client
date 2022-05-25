@@ -30,7 +30,7 @@ const Dashbord = () => {
             <Link to="/dashboard/review">Add review</Link>
           </li>
 
-          {/* {admin && (
+          {admin && (
             <li className="my-2">
               <Link to="/dashboard/addproduct">Add A Product</Link>
             </li>
@@ -49,7 +49,7 @@ const Dashbord = () => {
             <li className="my-2">
               <Link to="/dashboard/manageallorder">Manage All Orders</Link>
             </li>
-          )} */}
+          )}
         </ul>
       </div>
     </div>
