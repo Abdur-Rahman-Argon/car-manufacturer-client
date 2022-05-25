@@ -4,19 +4,25 @@ import { signOut } from "firebase/auth";
 import auth from "../../../firebase.init";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
+import Loading from "../Sheared/Loading";
 
 const Profile = () => {
-  const [user, loading, error] = useAuthState(auth);
-  const { displayName, email, phoneNumber, photoURL } = user;
-
-  if (user) {
-    console.log(user);
-  }
   const {
     register,
     formState: { errors },
     handleSubmit,
   } = useForm();
+  const [user, loading, error] = useAuthState(auth);
+  const { displayName, email, phoneNumber, photoURL } = user;
+
+  if (loading) {
+    return <Loading></Loading>;
+  }
+
+  const logOut = () => {
+    signOut(auth);
+    localStorage.removeItem("accessToken");
+  };
 
   const onSubmit = (data) => {
     const email = data.email;
@@ -28,7 +34,7 @@ const Profile = () => {
       <div class="card-body">
         <div class="avatar">
           <div class="w-24 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2 mx-auto">
-            <img src={user.photoURL} alt="profile" />
+            <img src={photoURL} alt="profile" />
           </div>
         </div>
 
@@ -86,7 +92,7 @@ const Profile = () => {
         </form>
         <div class="divider">OR</div>
         <div>
-          <button onClick={() => signOut(auth)} class="btn btn-primary w-full">
+          <button onClick={logOut} class="btn btn-primary w-full">
             Log Out
           </button>
         </div>

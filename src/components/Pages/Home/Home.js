@@ -1,15 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
+import useParts from "../../utilites/useParts";
 import Footer from "../Sheared/Footer";
 import Banner from "./Banner";
+import DisplayReview from "./DisplayReview";
 import PartsDetail from "./PartsDetail";
 
 const Home = () => {
-  const [parts, setParts] = useState([]);
-  useEffect(() => {
-    fetch("parts.json")
-      .then((res) => res.json())
-      .then((data) => setParts(data));
-  }, []);
+  const [parts] = useParts([]);
   return (
     <div>
       <Banner></Banner>
@@ -18,6 +15,7 @@ const Home = () => {
           <PartsDetail key={part._id} part={part}></PartsDetail>
         ))}
       </div>
+      <DisplayReview></DisplayReview>
       <Footer></Footer>
     </div>
   );

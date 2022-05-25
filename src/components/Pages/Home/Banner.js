@@ -13,7 +13,7 @@ const Banner = () => {
           <img
             src="https://i.ibb.co/jTHj5kf/carbanner.png"
             alt=""
-            class="max-w-lg  "
+            class=" w-96"
           />
         </div>
         <div className="m-1 flex-1 p-5 text-center">

@@ -17,6 +17,7 @@ const Update = () => {
     register,
     formState: { errors },
     handleSubmit,
+    reset,
   } = useForm();
 
   const onSubmit = (data) => {
@@ -24,6 +25,7 @@ const Update = () => {
     const photoURL = data.photoURL;
     const phoneNumber = data.phoneNumber;
     updateProfile({ displayName, photoURL, phoneNumber });
+    reset();
   };
 
   return (

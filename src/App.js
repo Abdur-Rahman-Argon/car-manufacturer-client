@@ -1,5 +1,6 @@
-import logo from "./logo.svg";
 import "./App.css";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import Navber from "./components/Pages/Sheared/Navber";
 import { Route, Routes } from "react-router-dom";
 import Home from "./components/Pages/Home/Home";
@@ -13,6 +14,12 @@ import MyOrder from "./components/Pages/Dashboard/MyOrder";
 import AddReview from "./components/Pages/Dashboard/AddReview";
 import Update from "./components/Pages/LogIn/Update";
 import AllParts from "./components/Pages/AllParts/AllParts";
+import MakeAdmin from "./components/Pages/Dashboard/MakeAdmin";
+import ManageProducts from "./components/Pages/Dashboard/ManageProducts";
+import ManageAllOrders from "./components/Pages/Dashboard/ManageAllOrders";
+import AddProduct from "./components/Pages/Dashboard/AddProduct";
+import RequreAdmin from "./components/Pages/Sheared/RequreAdmin";
+import NotFound from "./components/Pages/Sheared/NotFound";
 
 function App() {
   return (
@@ -41,9 +48,27 @@ function App() {
         >
           <Route index element={<MyOrder></MyOrder>}></Route>
           <Route path="review" element={<AddReview></AddReview>}></Route>
+          <Route path="makeadmin" element={<MakeAdmin></MakeAdmin>}></Route>
+          <Route path="addproduct" element={<AddProduct></AddProduct>}></Route>
+          <Route
+            path="manageproduct"
+            element={
+              <RequreAdmin>
+                <ManageProducts></ManageProducts>
+              </RequreAdmin>
+            }
+          ></Route>
+          <Route
+            path="manageallorder"
+            element={
+              <RequreAdmin>
+                <ManageAllOrders></ManageAllOrders>
+              </RequreAdmin>
+            }
+          ></Route>
         </Route>
         <Route
-          path="/purchase"
+          path="/purchase/:partsId"
           element={
             <RequreAuth>
               <Purchase></Purchase>
@@ -66,7 +91,9 @@ function App() {
             </RequreAuth>
           }
         ></Route>
+        <Route path="*" element={<NotFound></NotFound>}></Route>
       </Routes>
+      <ToastContainer />
     </div>
   );
 }

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import {
   useCreateUserWithEmailAndPassword,
@@ -7,6 +7,7 @@ import {
 } from "react-firebase-hooks/auth";
 import auth from "../../../firebase.init";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import useToken from "../../utilites/useToken";
 
 const SignUp = () => {
   const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
@@ -19,16 +20,28 @@ const SignUp = () => {
 
   const from = location?.state?.from?.pathname || "/";
 
-  if (user) {
-    navigate(from, { replace: true });
-  }
-
   const [updateProfile, updating, updateError] = useUpdateProfile(auth);
+
+  const [token] = useToken(user || gUser);
+
+  useEffect(() => {
+    if (token) {
+      navigate(from, { replace: true });
+    }
+  }, [token, from, navigate]);
+
+  // if (user) {
+  //   navigate(from, { replace: true });
+  // }
+  // if (user || gUser) {
+  //   console.log(user, gUser);
+  // }
 
   const {
     register,
     formState: { errors },
     handleSubmit,
+    reset,
   } = useForm();
 
   const onSubmit = async (data) => {
@@ -39,8 +52,8 @@ const SignUp = () => {
     const photoURL = data.photoUrl;
     if (password === confirmPassword) {
       await createUserWithEmailAndPassword(email, password);
-
       await updateProfile({ displayName, photoURL });
+      reset();
     }
 
     console.log(data);

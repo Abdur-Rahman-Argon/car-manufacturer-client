@@ -7,6 +7,11 @@ import auth from "../../../firebase.init";
 const Navber = () => {
   const [user, loading, error] = useAuthState(auth);
 
+  const logOut = () => {
+    signOut(auth);
+    localStorage.removeItem("accessToken");
+  };
+
   const menu = (
     <>
       <li className="mx-2 my-2">
@@ -15,20 +20,17 @@ const Navber = () => {
       <li className="mx-2 my-2">
         <Link to="/allparts">All Parts</Link>
       </li>
-      <li className="mx-2 my-2">
-        <Link to="/purchase">Purchase</Link>
-      </li>
+      {user && (
+        <li className="mx-2 my-2">
+          <Link to="/dashboard">Dashboard</Link>
+        </li>
+      )}
       <li className="mx-2 my-2">
         <Link to="/">Blog</Link>
       </li>
       <li className="mx-2 my-2">
         <Link to="/">About</Link>
       </li>
-      {user && (
-        <li className="mx-2 my-2">
-          <Link to="/dashboard">Dashboard</Link>
-        </li>
-      )}
 
       {user && (
         <li className="mx-2 my-2">
@@ -38,7 +40,7 @@ const Navber = () => {
 
       {user ? (
         <li className="mx-2 my-2">
-          <button onClick={() => signOut(auth)}>LogOut</button>
+          <button onClick={logOut}>LogOut</button>
         </li>
       ) : (
         <li className="mx-2 my-2">

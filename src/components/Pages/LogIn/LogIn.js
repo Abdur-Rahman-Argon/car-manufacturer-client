@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import {
   useAuthState,
@@ -7,34 +7,46 @@ import {
 } from "react-firebase-hooks/auth";
 import auth from "../../../firebase.init";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import useToken from "../../utilites/useToken";
+import Loading from "../Sheared/Loading";
 
 const LogIn = () => {
   const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
 
-  const [signInWithEmailAndPassword, LUser, loading, error] =
+  const [signInWithEmailAndPassword, LUser, Lloading, error] =
     useSignInWithEmailAndPassword(auth);
 
-  const [user] = useAuthState(auth);
+  const { register, handleSubmit, reset } = useForm();
+
+  const [user, loading] = useAuthState(auth);
   const navigate = useNavigate();
   const location = useLocation();
 
   const from = location?.state?.from?.pathname || "/";
 
-  if (user || LUser) {
-    navigate(from, { replace: true });
-  }
+  const [token] = useToken(LUser || gUser);
 
-  const {
-    register,
-    formState: { errors },
-    handleSubmit,
-  } = useForm();
+  useEffect(() => {
+    // const token = localStorage.getItem("accessToken");
+    if (user) {
+      navigate(from, { replace: true });
+    }
+  }, [user, from, navigate]);
+
+  // if (user || LUser) {
+  //   console.log("uaer auth", user, LUser);
+  // }
+
+  if (loading || Lloading) {
+    return <Loading></Loading>;
+  }
 
   const onSubmit = (data) => {
     const email = data.email;
     const password = data.password;
     signInWithEmailAndPassword(email, password);
-    console.log(data);
+    reset();
+    // console.log(data);
   };
 
   return (
@@ -49,7 +61,7 @@ const LogIn = () => {
             <br />
             <input
               {...register("email", { required: true })}
-              placeholder="Type here"
+              placeholder="Enter Your Email"
               id="email"
               class="input input-bordered w-full max-w-xs"
             />
@@ -67,7 +79,11 @@ const LogIn = () => {
             {/* {errors.firstName?.type === "required" && "First name is required"} */}
           </div>
           <div className="text-left my-3">
-            <input type="submit" className="btn btn-success w-full max-w-xs" />
+            <input
+              type="submit"
+              value="LogIn"
+              className="btn btn-success w-full max-w-xs"
+            />
           </div>
         </form>
       </div>
