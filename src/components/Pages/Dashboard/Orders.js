@@ -56,7 +56,7 @@ const Orders = ({ order, refetch }) => {
             onClick={() => removeOrder(_id)}
             class="btn w-20 btn-active btn-warning mx-auto "
           >
-            Remove
+            Cancel
           </button>
         )}
       </div>

@@ -1,7 +1,31 @@
 import React from "react";
 import { toast } from "react-toastify";
 
-const SingleProduct = ({ part, index }) => {
+const SingleProduct = ({ part, index, refetch }) => {
+  const removeParts = (id) => {
+    const deleteConfirm = window.confirm(
+      `Are you sure Your "${part.name}" Parts Remove?`
+    );
+    if (deleteConfirm) {
+      fetch(`http://localhost:5000/parts/${id}`, {
+        method: "DELETE",
+        headers: {
+          authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+        },
+      })
+        .then((res) => res.json())
+        .then((result) => {
+          console.log(result);
+          if (result.deletedCount) {
+            toast.success(` Your Order Is Remove Success`);
+            refetch();
+          }
+        });
+    } else {
+      toast.error("Remove Cancel");
+    }
+  };
+
   return (
     <tr>
       <th>{index + 1}</th>
@@ -9,7 +33,7 @@ const SingleProduct = ({ part, index }) => {
       <td>{part.AvailableStock}</td>
       <td>
         <label
-          onClick={""}
+          onClick={() => removeParts(part._id)}
           for="delete-confirm-modal"
           class="btn btn-xs btn-error"
         >

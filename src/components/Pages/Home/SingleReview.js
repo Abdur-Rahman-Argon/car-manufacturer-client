@@ -19,7 +19,7 @@ const SingleReview = ({ reviewe }) => {
             </div>
           </div>
           <div>
-            <h1 className="text-sm font-bold">Ratings:{ratings}</h1>
+            <h1 className="text-sm font-bold">Ratings: {ratings}</h1>
           </div>
         </div>
         <div>
