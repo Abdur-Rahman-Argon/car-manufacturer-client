@@ -7,7 +7,7 @@ const ManageProducts = () => {
   return (
     <div>
       <h1 className="text-2xl font-bold text-center text-purple-900 my-4">
-        Manage Your Parts Of Your Industry{" "}
+        Manage Your Parts Of Your Industry
       </h1>
       <div class="overflow-x-auto">
         <table class="table w-full">

@@ -58,11 +58,7 @@ function App() {
           ></Route>
           <Route
             path="manageallorder"
-            element={
-              <RequreAdmin>
-                <ManageAllOrders></ManageAllOrders>
-              </RequreAdmin>
-            }
+            element={<ManageAllOrders></ManageAllOrders>}
           ></Route>
         </Route>
         <Route

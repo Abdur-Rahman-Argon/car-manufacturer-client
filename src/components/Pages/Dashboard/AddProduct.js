@@ -14,7 +14,7 @@ const AddProduct = () => {
     const name = data.name;
     const Price = data.Price;
     const AvailableStock = data.AvailableStock;
-    const minimumorder = data.minimumorder;
+    const minimumOrder = data.minimumOrder;
     const description = data.description;
 
     const parts = {
@@ -22,7 +22,7 @@ const AddProduct = () => {
       name,
       Price,
       AvailableStock,
-      minimumorder,
+      minimumOrder,
       description,
       AddedBy: displayName,
     };
@@ -94,10 +94,10 @@ const AddProduct = () => {
         </div>
 
         <div className="text-left my-3">
-          <label htmlFor="minimumorder">Minimum Order</label>
+          <label htmlFor="minimumOrder">Minimum Order</label>
           <br />
           <input
-            {...register("minimumorder", { required: true })}
+            {...register("minimumOrder", { required: true })}
             placeholder="Minimum Order Input"
             id="minimumOrder"
             class="input input-bordered w-full max-w-xs"

@@ -80,11 +80,11 @@ const Purchase = () => {
     <div class=" ">
       <div class="hero bg-base-100">
         <div class="hero-content flex-col lg:flex-row">
-          <div className="flex-1 lg:border-r-2 text-center">
+          <div className="flex-1 lg:border-r-2 text-center p-6">
             <img src={img} alt="Shoes" className="w-60 mx-auto" />
             <h1 className="text-xl font-semibold">{name}</h1>
           </div>
-          <div className="flex-1 p-4">
+          <div className=" p-4">
             <h2 class="text-2xl font-bold text-teal-700">{name}</h2>
             <h2 class="card-title">
               Price: {Price}{" "}
@@ -95,9 +95,9 @@ const Purchase = () => {
             <p>
               <b>Description: {description}</b>
             </p>
-            <div className=" flex items-center">
-              <div>
-                <p className="text-xl font-semibold mx-5">Orders Quantity :</p>
+            <div className=" flex items-center w-full">
+              <div className="">
+                <p className="text-md font-semibold mx-5">Orders Quantity:</p>
               </div>
               <div className=" flex items-center">
                 <button

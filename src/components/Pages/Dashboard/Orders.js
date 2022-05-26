@@ -1,8 +1,32 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
 
-const Orders = ({ order }) => {
+const Orders = ({ order, refetch }) => {
   const { _id, img, ordersCountity, Price, paid, productName } = order;
+
+  const removeOrder = (id) => {
+    const deleteConfirm = window.confirm("Are you sure remove Your order?");
+    if (deleteConfirm) {
+      fetch(`http://localhost:5000/parches/${id}`, {
+        method: "DELETE",
+        headers: {
+          authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+        },
+      })
+        .then((res) => res.json())
+        .then((result) => {
+          console.log(result);
+          if (result.deletedCount) {
+            toast.error(` Your Order Is Remove Success`);
+            refetch();
+          }
+        });
+    } else {
+      toast.success("Remove Cancel");
+    }
+  };
+
   return (
     <div className="card p-8 bg-base-100 shadow-xl m-1 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 my-5 mx-auto items-center">
       <div className="w-96">
@@ -28,7 +52,10 @@ const Orders = ({ order }) => {
       </div>
       <div className="w-96 my-2 text-center">
         {Price && (
-          <button class="btn w-20 btn-active btn-warning mx-auto ">
+          <button
+            onClick={() => removeOrder(_id)}
+            class="btn w-20 btn-active btn-warning mx-auto "
+          >
             Remove
           </button>
         )}

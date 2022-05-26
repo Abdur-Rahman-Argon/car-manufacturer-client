@@ -16,7 +16,12 @@ const LogIn = () => {
   const [signInWithEmailAndPassword, LUser, Lloading, error] =
     useSignInWithEmailAndPassword(auth);
 
-  const { register, handleSubmit, reset } = useForm();
+  const {
+    register,
+    formState: { errors },
+    handleSubmit,
+    reset,
+  } = useForm();
 
   const [user, loading] = useAuthState(auth);
   const navigate = useNavigate();
@@ -60,23 +65,64 @@ const LogIn = () => {
             <label htmlFor="email">Email</label>
             <br />
             <input
-              {...register("email", { required: true })}
-              placeholder="Enter Your Email"
+              {...register("email", {
+                required: {
+                  value: true,
+                  message: "Email is Required",
+                },
+                pattern: {
+                  value: /[a-z0-9]+@[a-z]+\.[a-z]{2,3}/,
+                  message: "Provide a valid Email",
+                },
+              })}
+              placeholder="Email"
               id="email"
               class="input input-bordered w-full max-w-xs"
             />
-            {/* {errors.firstName?.type === "required" && "First name is required"} */}
+            <label className="label">
+              {errors.email?.type === "required" && (
+                <span className="label-text-alt text-red-500">
+                  {errors.email.message}
+                </span>
+              )}
+              {errors.email?.type === "pattern" && (
+                <span className="label-text-alt text-red-500">
+                  {errors.email.message}
+                </span>
+              )}
+            </label>
           </div>
           <div className="text-left my-3 ">
             <label htmlFor="password">Password</label>
             <br />
+
             <input
-              {...register("password", { required: true })}
+              {...register("password", {
+                required: {
+                  value: true,
+                  message: "Password is Required",
+                },
+                minLength: {
+                  value: 8,
+                  message: "Password Minimum Length 8 characters ",
+                },
+              })}
               placeholder="Password"
               id="password"
               class="input input-bordered w-full max-w-xs"
             />
-            {/* {errors.firstName?.type === "required" && "First name is required"} */}
+            <label className="label">
+              {errors.password?.type === "required" && (
+                <span className="label-text-alt text-red-700">
+                  {errors.password.message}
+                </span>
+              )}
+              {errors.password?.type === "minLength" && (
+                <span className="label-text-alt text-red-700">
+                  {errors.password.message}
+                </span>
+              )}
+            </label>
           </div>
           <div className="text-left my-3">
             <input
