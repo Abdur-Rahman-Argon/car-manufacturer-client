@@ -1,31 +1,82 @@
-import React from "react";
+import React, { useState } from "react";
 import { useAuthState, useUpdateProfile } from "react-firebase-hooks/auth";
-import { signOut } from "firebase/auth";
 import auth from "../../../firebase.init";
 import { useForm } from "react-hook-form";
+import { toast } from "react-toastify";
+import { useQuery } from "react-query";
+import Loading from "../Sheared/Loading";
+import { useNavigate } from "react-router-dom";
 
 const Update = () => {
-  const [user, loading, error] = useAuthState(auth);
-  const { displayName, email, phoneNumber, photoURL } = user;
-
-  if (user) {
-    console.log(user);
-  }
-  const [updateProfile, updating, updateError] = useUpdateProfile(auth);
-
+  // const [users, setUsers] = useState([]);
+  const [user, loading] = useAuthState(auth);
+  const { email } = user;
   const {
     register,
     formState: { errors },
     handleSubmit,
     reset,
   } = useForm();
+  const [updateProfile, updating, updateError] = useUpdateProfile(auth);
+  const navigate = useNavigate();
 
-  const onSubmit = (data) => {
-    const displayName = data.displayName;
+  const {
+    isLoading,
+    error,
+    data: users,
+    refetch,
+  } = useQuery("user", () =>
+    fetch(`http://localhost:5000/user/${email}`, {
+      method: "GET",
+      headers: {
+        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+      },
+    }).then((res) => res.json())
+  );
+
+  if (isLoading) {
+    return <Loading></Loading>;
+  }
+  if (users) {
+    console.log(users);
+  }
+
+  const { _id } = users;
+
+  const onSubmit = async (data) => {
+    const displayName = data.name;
     const photoURL = data.photoURL;
-    const phoneNumber = data.phoneNumber;
-    updateProfile({ displayName, photoURL, phoneNumber });
-    reset();
+    const phoneNumber = data.phone;
+    const linkedIn = data.linkedin;
+    const faceBook = data.facebook;
+    const User = {
+      displayName,
+      photoURL,
+      phoneNumber,
+      linkedIn,
+      faceBook,
+    };
+    console.log(data, _id);
+    await updateProfile({ displayName, photoURL });
+
+    if (email) {
+      fetch(`http://localhost:5000/users/${_id}`, {
+        method: "PUT",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(User),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          console.log("user information", data);
+          if (data.result.modifiedCount === 1) {
+            toast.success("user information updated success");
+            navigate("/profile");
+            reset();
+          }
+        });
+    }
   };
 
   return (
@@ -76,6 +127,26 @@ const Update = () => {
               {...register("photoURL", { required: true })}
               placeholder="Enter Photo URL"
               id="img"
+              class="input input-bordered w-full max-w-xs"
+            />
+          </div>
+          <div className="text-left my-3">
+            <label htmlFor="facebook">Facebook</label>
+            <br />
+            <input
+              {...register("facebook", { required: true })}
+              placeholder="Enter Facebook URL"
+              id="facebook"
+              class="input input-bordered w-full max-w-xs"
+            />
+          </div>
+          <div className="text-left my-3">
+            <label htmlFor="linkedin">LinkedIn Url</label>
+            <br />
+            <input
+              {...register("linkedin", { required: true })}
+              placeholder="LinkedIn Photo URL"
+              id="linkedin"
               class="input input-bordered w-full max-w-xs"
             />
           </div>
