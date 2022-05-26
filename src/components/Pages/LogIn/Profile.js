@@ -2,11 +2,10 @@ import React from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { signOut } from "firebase/auth";
 import auth from "../../../firebase.init";
-import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import Loading from "../Sheared/Loading";
 import { useQuery } from "react-query";
-
+import { SiLinkedin } from "react-icons/si";
 const Profile = () => {
   const [user, loading] = useAuthState(auth);
   const {
@@ -55,7 +54,7 @@ const Profile = () => {
             <label htmlFor="email">Name</label>
             <br />
             <input
-              value={`${displayName}`}
+              value={`${user.displayName}`}
               id="name"
               className="input input-bordered w-full max-w-xs"
               readOnly
@@ -87,7 +86,7 @@ const Profile = () => {
                 <a href={faceBook}>
                   <button className="btn btn-success w-full max-w-xs">
                     Facebook
-                  </button>{" "}
+                  </button>
                 </a>
                 <br />
                 <br />

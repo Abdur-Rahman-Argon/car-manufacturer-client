@@ -81,10 +81,10 @@ const Purchase = () => {
       <div className="hero bg-base-100">
         <div className="hero-content flex-col lg:flex-row">
           <div className="flex-1 lg:border-r-2 text-center p-6">
-            <img src={img} alt="Shoes" className="w-60 mx-auto" />
+            <img src={img} alt="Shoes" className="w-96 mx-auto" />
             <h1 className="text-xl font-semibold">{name}</h1>
           </div>
-          <div className=" p-4">
+          <div className="flex-1 p-4 md:w-96 mx-auto">
             <h2 className="text-2xl font-bold text-teal-700">{name}</h2>
             <h2 className="card-title">
               Price: {Price}{" "}
