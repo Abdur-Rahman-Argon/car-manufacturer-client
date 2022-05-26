@@ -77,7 +77,7 @@ const LogIn = () => {
               })}
               placeholder="Email"
               id="email"
-              class="input input-bordered w-full max-w-xs"
+              className="input input-bordered w-full max-w-xs"
             />
             <label className="label">
               {errors.email?.type === "required" && (
@@ -109,7 +109,7 @@ const LogIn = () => {
               })}
               placeholder="Password"
               id="password"
-              class="input input-bordered w-full max-w-xs"
+              className="input input-bordered w-full max-w-xs"
             />
             <label className="label">
               {errors.password?.type === "required" && (
@@ -142,11 +142,11 @@ const LogIn = () => {
           </Link>
         </p>
       </div>
-      <div class="divider">OR</div>
+      <div className="divider">OR</div>
       <div>
         <button
           onClick={() => signInWithGoogle()}
-          class="btn btn-outline   w-full"
+          className="btn btn-outline   w-full"
         >
           SIgn In With Google
         </button>

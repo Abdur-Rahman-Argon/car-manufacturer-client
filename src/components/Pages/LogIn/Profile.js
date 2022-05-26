@@ -15,7 +15,7 @@ const Profile = () => {
     data: users,
     refetch,
   } = useQuery("user", () =>
-    fetch(`http://localhost:5000/user/${user.email}`, {
+    fetch(`https://hidden-harbor-39382.herokuapp.com/user/${user.email}`, {
       method: "GET",
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
@@ -26,9 +26,9 @@ const Profile = () => {
   if (isLoading) {
     return <Loading></Loading>;
   }
-  if (user) {
-    console.log(user);
-  }
+  // if (user) {
+  //   console.log(user);
+  // }
 
   const logOut = () => {
     signOut(auth);
@@ -42,10 +42,10 @@ const Profile = () => {
   const { displayName, email, phoneNumber, photoURL, linkedIn, faceBook } =
     users;
   return (
-    <div class="card w-96 bg-base-100 shadow-xl mx-auto text-center">
-      <div class="card-body">
-        <div class="avatar">
-          <div class="w-24 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2 mx-auto">
+    <div className="card w-96 bg-base-100 shadow-xl mx-auto text-center">
+      <div className="card-body">
+        <div className="avatar">
+          <div className="w-24 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2 mx-auto">
             <img src={photoURL} alt="profile" />
           </div>
         </div>
@@ -57,7 +57,7 @@ const Profile = () => {
             <input
               value={`${displayName}`}
               id="name"
-              class="input input-bordered w-full max-w-xs"
+              className="input input-bordered w-full max-w-xs"
               readOnly
             />
           </div>
@@ -67,7 +67,7 @@ const Profile = () => {
             <input
               value={`${email}`}
               id="email"
-              class="input input-bordered w-full max-w-xs"
+              className="input input-bordered w-full max-w-xs"
               readOnly
             />
           </div>
@@ -77,7 +77,7 @@ const Profile = () => {
             <input
               value={`${phoneNumber}`}
               id="phone"
-              class="input input-bordered w-full max-w-xs"
+              className="input input-bordered w-full max-w-xs"
               readOnly
             />
           </div>
@@ -99,7 +99,7 @@ const Profile = () => {
               </>
             )}
           </div>
-          <div class="divider"></div>
+          <div className="divider"></div>
 
           <div className="text-left my-3">
             <Link to="/update" className="btn btn-primary w-full max-w-xs">
@@ -107,9 +107,9 @@ const Profile = () => {
             </Link>
           </div>
         </div>
-        <div class="divider">OR</div>
+        <div className="divider">OR</div>
         <div>
-          <button onClick={logOut} class="btn btn-outline w-full">
+          <button onClick={logOut} className="btn btn-outline w-full">
             Log Out
           </button>
         </div>

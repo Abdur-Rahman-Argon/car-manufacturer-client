@@ -13,18 +13,21 @@ const stripePromise = loadStripe(
 const Payment = () => {
   const [order, setorder] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:5000/parches/628cc2c180b02334d4d1ad4d", {
-      method: "GET",
-      headers: {
-        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-      },
-    })
+    fetch(
+      "https://hidden-harbor-39382.herokuapp.com/parches/628cc2c180b02334d4d1ad4d",
+      {
+        method: "GET",
+        headers: {
+          authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+        },
+      }
+    )
       .then((res) => res.json())
       .then((data) => setorder(data));
   }, []);
 
   if (order) {
-    console.log(order);
+    // console.log(order);
   }
   const paymentOrder = { order };
 
@@ -34,8 +37,8 @@ const Payment = () => {
   const payablePrice = "5124000";
 
   return (
-    <div class="hero min-h-screen">
-      <div class="hero-content flex-col lg:flex-row-reverse">
+    <div className="hero min-h-screen">
+      <div className="hero-content flex-col lg:flex-row-reverse">
         <div className="w-full">
           <Elements stripe={stripePromise}>
             <CheckoutForm paymentOrder={paymentOrder}></CheckoutForm>
@@ -50,7 +53,7 @@ const Payment = () => {
           <h1> Orders Quantity : {ordersCountity} </h1>
           <h1>Total Price : {totalPrice}</h1>
           <h1>Tax : 5 % </h1>
-          <div class="divider"></div>
+          <div className="divider"></div>
           <div>
             <h1>Payable Price: {payablePrice}</h1>
           </div>

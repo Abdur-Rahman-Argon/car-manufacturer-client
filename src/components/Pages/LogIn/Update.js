@@ -26,7 +26,7 @@ const Update = () => {
     data: users,
     refetch,
   } = useQuery("user", () =>
-    fetch(`http://localhost:5000/user/${email}`, {
+    fetch(`https://hidden-harbor-39382.herokuapp.com/user/${email}`, {
       method: "GET",
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
@@ -56,11 +56,11 @@ const Update = () => {
       linkedIn,
       faceBook,
     };
-    console.log(data, _id);
+    // console.log(data, _id);
     await updateProfile({ displayName, photoURL });
 
     if (email) {
-      fetch(`http://localhost:5000/users/${_id}`, {
+      fetch(`https://hidden-harbor-39382.herokuapp.com/users/${_id}`, {
         method: "PUT",
         headers: {
           "content-type": "application/json",
@@ -69,7 +69,7 @@ const Update = () => {
       })
         .then((res) => res.json())
         .then((data) => {
-          console.log("user information", data);
+          // console.log("user information", data);
           if (data.result.modifiedCount === 1) {
             toast.success("user information updated success");
             navigate("/profile");
@@ -80,10 +80,10 @@ const Update = () => {
   };
 
   return (
-    <div class="card w-96 bg-base-100 shadow-xl mx-auto text-center">
-      <div class="card-body">
-        <div class="avatar">
-          <div class="w-24 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2 mx-auto">
+    <div className="card w-96 bg-base-100 shadow-xl mx-auto text-center">
+      <div className="card-body">
+        <div className="avatar">
+          <div className="w-24 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2 mx-auto">
             <img src={user.photoURL} alt="profile" />
           </div>
         </div>
@@ -96,7 +96,7 @@ const Update = () => {
               {...register("name", { required: true })}
               placeholder="Enter displayName"
               id="name"
-              class="input input-bordered w-full max-w-xs"
+              className="input input-bordered w-full max-w-xs"
             />
           </div>
           <div className="text-left my-3">
@@ -106,7 +106,7 @@ const Update = () => {
               {...register("email", { required: true })}
               value={`${email}`}
               id="email"
-              class="input input-bordered w-full max-w-xs"
+              className="input input-bordered w-full max-w-xs"
               readOnly
             />
           </div>
@@ -117,7 +117,7 @@ const Update = () => {
               {...register("phone", { required: true })}
               placeholder="phoneNumber"
               id="phone"
-              class="input input-bordered w-full max-w-xs"
+              className="input input-bordered w-full max-w-xs"
             />
           </div>
           <div className="text-left my-3">
@@ -127,7 +127,7 @@ const Update = () => {
               {...register("photoURL", { required: true })}
               placeholder="Enter Photo URL"
               id="img"
-              class="input input-bordered w-full max-w-xs"
+              className="input input-bordered w-full max-w-xs"
             />
           </div>
           <div className="text-left my-3">
@@ -137,7 +137,7 @@ const Update = () => {
               {...register("facebook", { required: true })}
               placeholder="Enter Facebook URL"
               id="facebook"
-              class="input input-bordered w-full max-w-xs"
+              className="input input-bordered w-full max-w-xs"
             />
           </div>
           <div className="text-left my-3">
@@ -147,7 +147,7 @@ const Update = () => {
               {...register("linkedin", { required: true })}
               placeholder="LinkedIn Photo URL"
               id="linkedin"
-              class="input input-bordered w-full max-w-xs"
+              className="input input-bordered w-full max-w-xs"
             />
           </div>
 

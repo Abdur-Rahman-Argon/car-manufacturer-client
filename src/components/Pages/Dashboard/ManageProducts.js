@@ -12,7 +12,7 @@ const ManageProducts = () => {
     isLoading,
     refetch,
   } = useQuery("orders", () =>
-    fetch(`http://localhost:5000/parts`, {
+    fetch(`https://hidden-harbor-39382.herokuapp.com/parts`, {
       method: "GET",
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
@@ -29,8 +29,8 @@ const ManageProducts = () => {
       <h1 className="text-2xl font-bold text-center text-purple-900 my-4">
         Manage Your Parts Of Your Industry
       </h1>
-      <div class="overflow-x-auto">
-        <table class="table w-full">
+      <div className="overflow-x-auto">
+        <table className="table w-full">
           <thead>
             <tr>
               <th>si</th>

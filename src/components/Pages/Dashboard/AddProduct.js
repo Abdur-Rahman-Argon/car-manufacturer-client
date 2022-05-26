@@ -28,7 +28,7 @@ const AddProduct = () => {
     };
 
     if (email) {
-      fetch(`http://localhost:5000/parts`, {
+      fetch(`https://hidden-harbor-39382.herokuapp.com/parts`, {
         method: "POST",
         headers: {
           "content-type": "application/json",
@@ -38,14 +38,14 @@ const AddProduct = () => {
       })
         .then((res) => res.json())
         .then((data) => {
-          console.log(data);
+          // console.log(data);
           toast.success("Car Parts Added Succssfully");
           reset();
         });
     }
   };
   return (
-    <div class="card w-8/12 bg-base-100 shadow-xl mx-auto p-9 text-center">
+    <div className="card w-8/12 bg-base-100 shadow-xl mx-auto p-9 text-center">
       <h1 className="text-3xl font-bold text-lime-900 my-5">
         Add A New Cars Parts
       </h1>
@@ -57,7 +57,7 @@ const AddProduct = () => {
             {...register("img", { required: true })}
             placeholder="Parts Image"
             id="img"
-            class="input input-bordered w-full max-w-xs"
+            className="input input-bordered w-full max-w-xs"
           />
         </div>
         <div className="text-left my-3">
@@ -67,7 +67,7 @@ const AddProduct = () => {
             {...register("name", { required: true })}
             placeholder="Parts Title"
             id="name"
-            class="input input-bordered w-full max-w-xs"
+            className="input input-bordered w-full max-w-xs"
           />
         </div>
 
@@ -78,7 +78,7 @@ const AddProduct = () => {
             {...register("Price", { required: true })}
             placeholder="Parts Price"
             id="price"
-            class="input input-bordered w-full max-w-xs"
+            className="input input-bordered w-full max-w-xs"
           />
         </div>
 
@@ -89,7 +89,7 @@ const AddProduct = () => {
             {...register("AvailableStock", { required: true })}
             placeholder="Parts Stocks"
             id="stock"
-            class="input input-bordered w-full max-w-xs"
+            className="input input-bordered w-full max-w-xs"
           />
         </div>
 
@@ -100,7 +100,7 @@ const AddProduct = () => {
             {...register("minimumOrder", { required: true })}
             placeholder="Minimum Order Input"
             id="minimumOrder"
-            class="input input-bordered w-full max-w-xs"
+            className="input input-bordered w-full max-w-xs"
           />
         </div>
 
@@ -113,7 +113,7 @@ const AddProduct = () => {
             rows="15"
             {...register("description", { required: true })}
             placeholder=" Parts description here"
-            class="input input-bordered w-full max-w-xs"
+            className="input input-bordered w-full max-w-xs"
           ></textarea>
           <input />
         </div>

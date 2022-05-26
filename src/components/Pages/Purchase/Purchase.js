@@ -10,7 +10,7 @@ const Purchase = () => {
   const [user, loading, error] = useAuthState(auth);
   const { displayName, email } = user;
   const { partsId } = useParams();
-  const uri = `http://localhost:5000/parts/${partsId}`;
+  const uri = `https://hidden-harbor-39382.herokuapp.com/parts/${partsId}`;
 
   useEffect(() => {
     fetch(uri)
@@ -57,7 +57,7 @@ const Purchase = () => {
     };
 
     if (email) {
-      fetch(`http://localhost:5000/parches`, {
+      fetch(`https://hidden-harbor-39382.herokuapp.com/parches`, {
         method: "POST",
         headers: {
           "content-type": "application/json",
@@ -67,7 +67,7 @@ const Purchase = () => {
       })
         .then((res) => res.json())
         .then((data) => {
-          console.log(data);
+          // console.log(data);
           if (data.acknowledged === true) {
             toast.success("Your Selected item purchase success");
             reset();
@@ -77,21 +77,21 @@ const Purchase = () => {
     }
   };
   return (
-    <div class=" ">
-      <div class="hero bg-base-100">
-        <div class="hero-content flex-col lg:flex-row">
+    <div className=" ">
+      <div className="hero bg-base-100">
+        <div className="hero-content flex-col lg:flex-row">
           <div className="flex-1 lg:border-r-2 text-center p-6">
             <img src={img} alt="Shoes" className="w-60 mx-auto" />
             <h1 className="text-xl font-semibold">{name}</h1>
           </div>
           <div className=" p-4">
-            <h2 class="text-2xl font-bold text-teal-700">{name}</h2>
-            <h2 class="card-title">
+            <h2 className="text-2xl font-bold text-teal-700">{name}</h2>
+            <h2 className="card-title">
               Price: {Price}{" "}
               <span className="text-sm"> (per one parts price)</span>
             </h2>
-            <h2 class="card-title">Available Stock: {AvailableStock}</h2>
-            <h2 class="card-title">MinimumOrder : {minimumOrder}</h2>
+            <h2 className="card-title">Available Stock: {AvailableStock}</h2>
+            <h2 className="card-title">MinimumOrder : {minimumOrder}</h2>
             <p>
               <b>Description: {description}</b>
             </p>
@@ -102,7 +102,7 @@ const Purchase = () => {
               <div className=" flex items-center">
                 <button
                   disabled={countity == AvailableStock}
-                  class="btn btn-active font-bold text-xl"
+                  className="btn btn-active font-bold text-xl"
                   onClick={addPositive}
                 >
                   +
@@ -110,14 +110,14 @@ const Purchase = () => {
                 <input
                   type="text"
                   value={countity}
-                  class="input input-bordered input-primary w-20 mx-3 max-w-xs"
+                  className="input input-bordered input-primary w-20 mx-3 max-w-xs"
                   readOnly
                 />
 
                 <button
                   disabled={countity == minimumOrder}
                   onClick={addNagetive}
-                  class="btn btn-active font-bold text-xl "
+                  className="btn btn-active font-bold text-xl "
                 >
                   -
                 </button>
@@ -126,8 +126,8 @@ const Purchase = () => {
           </div>
         </div>
       </div>
-      <div class="divider"></div>
-      <div class="card flex-shrink-0 w-full max-w-sm mx-auto shadow-2xl p-10 ">
+      <div className="divider"></div>
+      <div className="card flex-shrink-0 w-full max-w-sm mx-auto shadow-2xl p-10 ">
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="text-left my-3">
             <label htmlFor="email">Name</label>
@@ -136,7 +136,7 @@ const Purchase = () => {
               {...register("name", { required: true })}
               value={`${displayName}`}
               id="name"
-              class="input input-bordered w-full max-w-xs"
+              className="input input-bordered w-full max-w-xs"
               readOnly
             />
           </div>
@@ -147,7 +147,7 @@ const Purchase = () => {
               {...register("email", { required: true })}
               value={`${email}`}
               id="email"
-              class="input input-bordered w-full max-w-xs"
+              className="input input-bordered w-full max-w-xs"
               readOnly
             />
           </div>
@@ -159,7 +159,7 @@ const Purchase = () => {
               id="phoneNumber"
               type="number"
               placeholder="Enter Phone No"
-              class="input input-bordered w-full max-w-xs"
+              className="input input-bordered w-full max-w-xs"
             />
           </div>
           <div className="text-left my-3">
@@ -169,7 +169,7 @@ const Purchase = () => {
               {...register("address", { required: true })}
               placeholder="Enter Address"
               id="address"
-              class="input input-bordered w-full max-w-xs"
+              className="input input-bordered w-full max-w-xs"
             />
           </div>
 

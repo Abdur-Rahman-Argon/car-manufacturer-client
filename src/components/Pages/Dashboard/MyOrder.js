@@ -13,12 +13,15 @@ const MyOrder = () => {
     isLoading,
     refetch,
   } = useQuery("orders", () =>
-    fetch(`http://localhost:5000/parches?email=${user.email}`, {
-      method: "GET",
-      headers: {
-        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-      },
-    }).then((res) => res.json())
+    fetch(
+      `https://hidden-harbor-39382.herokuapp.com/parches?email=${user.email}`,
+      {
+        method: "GET",
+        headers: {
+          authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+        },
+      }
+    ).then((res) => res.json())
   );
 
   if (loading || isLoading) {
@@ -30,7 +33,7 @@ const MyOrder = () => {
       <h1 className="text-2xl font-bold text-center text-purple-700 my-4">
         Your All Orders Here
       </h1>
-      {orders.map((order) => (
+      {orders?.map((order) => (
         <Orders key={order._id} order={order} refetch={refetch}></Orders>
       ))}
     </div>

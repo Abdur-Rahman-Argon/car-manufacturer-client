@@ -12,7 +12,7 @@ const CheckoutForm = ({ paymentOrder }) => {
     // setPrice(paymentOrder?.order?.Price);
   }
   //   useEffect(() => {
-  //     fetch(`http://localhost:5000/create-payment`, {
+  //     fetch(`https://hidden-harbor-39382.herokuapp.com/create-payment`, {
   //       method: "POST",
   //       headers: {
   //         "content-type": "application/json",
@@ -71,7 +71,7 @@ const CheckoutForm = ({ paymentOrder }) => {
         }}
       />
       <button
-        class="btn btn-wide btn-success my-4"
+        className="btn btn-wide btn-success my-4"
         type="submit"
         disabled={!stripe || !clientSecret}
       >

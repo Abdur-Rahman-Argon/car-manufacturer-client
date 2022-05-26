@@ -22,6 +22,7 @@ import RequreAdmin from "./components/Pages/Sheared/RequreAdmin";
 import NotFound from "./components/Pages/Sheared/NotFound";
 import Payment from "./components/Pages/Dashboard/Payment";
 import Blog from "./components/Pages/Blog/Blog";
+import Portfolio from "./components/Pages/Portfolio/Portfolio";
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home></Home>}></Route>
         <Route path="/blog" element={<Blog></Blog>}></Route>
+        <Route path="/portfolio" element={<Portfolio></Portfolio>}></Route>
         <Route path="/allparts" element={<AllParts></AllParts>}></Route>
         <Route path="/signup" element={<SignUp></SignUp>}></Route>
         <Route path="/login" element={<LogIn></LogIn>}></Route>

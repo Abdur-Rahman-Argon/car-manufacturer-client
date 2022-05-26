@@ -8,7 +8,7 @@ const Orders = ({ order, refetch }) => {
   const removeOrder = (id) => {
     const deleteConfirm = window.confirm("Are you sure remove Your order?");
     if (deleteConfirm) {
-      fetch(`http://localhost:5000/parches/${id}`, {
+      fetch(`https://hidden-harbor-39382.herokuapp.com/parches/${id}`, {
         method: "DELETE",
         headers: {
           authorization: `Bearer ${localStorage.getItem("accessToken")}`,
@@ -16,7 +16,7 @@ const Orders = ({ order, refetch }) => {
       })
         .then((res) => res.json())
         .then((result) => {
-          console.log(result);
+          // console.log(result);
           if (result.deletedCount) {
             toast.error(` Your Order Is Remove Success`);
             refetch();
@@ -44,17 +44,22 @@ const Orders = ({ order, refetch }) => {
       <div className="w-96 my-2 text-center">
         {Price ? (
           <Link to={`/dashboard/payment/${_id}`}>
-            <button class="btn btn-active btn-primary mx-auto ">Pay Now</button>
+            <button className="btn btn-active btn-primary mx-auto ">
+              Pay Now
+            </button>
           </Link>
         ) : (
-          <button class="btn btn-active btn-primary mx-auto "> Paid </button>
+          <button className="btn btn-active btn-primary mx-auto ">
+            {" "}
+            Paid{" "}
+          </button>
         )}
       </div>
       <div className="w-96 my-2 text-center">
         {Price && (
           <button
             onClick={() => removeOrder(_id)}
-            class="btn w-20 btn-active btn-warning mx-auto "
+            className="btn w-20 btn-active btn-warning mx-auto "
           >
             Cancel
           </button>

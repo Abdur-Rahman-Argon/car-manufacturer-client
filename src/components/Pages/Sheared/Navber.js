@@ -29,7 +29,7 @@ const Navber = () => {
         <Link to="/blog">Blog</Link>
       </li>
       <li className="mx-2 my-2">
-        <Link to="/protpholio">Protpholio</Link>
+        <Link to="/portfolio">Portfolio</Link>
       </li>
 
       {user && (
@@ -51,15 +51,15 @@ const Navber = () => {
   );
 
   return (
-    <div class="navbar bg-base-100 bg-slate-100">
-      <div class="navbar-start">
-        <div class="dropdown">
-          <label tabindex="0" class="btn btn-ghost lg:hidden">
+    <div className="navbar bg-base-100 bg-slate-100">
+      <div className="navbar-start">
+        <div className="dropdown">
+          <label tabindex="0" className="btn btn-ghost lg:hidden">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
               viewBox="0 0 24 24"
-              class="inline-block w-5 h-5 stroke-current"
+              className="inline-block w-5 h-5 stroke-current"
             >
               <path
                 stroke-linecap="round"
@@ -71,7 +71,7 @@ const Navber = () => {
           </label>
           <ul
             tabindex="0"
-            class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
+            className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
           >
             {menu}
           </ul>
@@ -82,8 +82,8 @@ const Navber = () => {
           </Link>
         </h1>
       </div>
-      <div class="navbar-center hidden lg:flex">
-        <ul class="menu menu-horizontal p-0">{menu}</ul>
+      <div className="navbar-center hidden lg:flex">
+        <ul className="menu menu-horizontal p-0">{menu}</ul>
       </div>
     </div>
   );

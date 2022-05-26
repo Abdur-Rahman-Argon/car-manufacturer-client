@@ -67,7 +67,7 @@ const SignUp = () => {
       setErrMsg("Password & ConfirmPassword Is Not Matched");
     }
 
-    console.log(data);
+    // console.log(data);
   };
   return (
     <div className="card w-96 bg-base-100 shadow-2xl mx-auto p-8">
@@ -91,7 +91,7 @@ const SignUp = () => {
               })}
               placeholder="Enter User Name"
               id="name"
-              class="input input-bordered w-full max-w-xs"
+              className="input input-bordered w-full max-w-xs"
             />
             <label className="label">
               {errors.name?.type === "required" && (
@@ -108,7 +108,7 @@ const SignUp = () => {
               {...register("photoUrl")}
               placeholder="Photo Url"
               id="photoUrl"
-              class="input input-bordered w-full max-w-xs"
+              className="input input-bordered w-full max-w-xs"
             />
           </div>
           <div className="text-left my-3">
@@ -127,7 +127,7 @@ const SignUp = () => {
               })}
               placeholder="Email"
               id="email"
-              class="input input-bordered w-full max-w-xs"
+              className="input input-bordered w-full max-w-xs"
             />
             <label className="label">
               {errors.email?.type === "required" && (
@@ -159,7 +159,7 @@ const SignUp = () => {
               })}
               placeholder="Password"
               id="password"
-              class="input input-bordered w-full max-w-xs"
+              className="input input-bordered w-full max-w-xs"
             />
             <label className="label">
               {errors.password?.type === "required" && (
@@ -190,7 +190,7 @@ const SignUp = () => {
               })}
               placeholder="Confirm Password"
               id="confirm-password"
-              class="input input-bordered w-full max-w-xs"
+              className="input input-bordered w-full max-w-xs"
             />
             <label className="label">
               {errors.confirmPassword?.type === "required" && (
@@ -225,11 +225,11 @@ const SignUp = () => {
           </Link>
         </p>
       </div>
-      <div class="divider">OR</div>
+      <div className="divider">OR</div>
       <div>
         <button
           onClick={() => signInWithGoogle()}
-          class="btn btn-outline   w-full"
+          className="btn btn-outline   w-full"
         >
           SIgn In With Google
         </button>

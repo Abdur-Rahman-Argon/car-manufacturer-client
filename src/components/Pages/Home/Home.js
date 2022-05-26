@@ -14,11 +14,11 @@ const Home = () => {
   const cParts = parts.slice(-3);
   return (
     <div>
-      <div class=" w-11/12 mx-auto text-center ">
+      <div className=" w-11/12 mx-auto text-center ">
         <Banner></Banner>
       </div>
       <section className=" my-10">
-        <div class="card w-11/12 mx-auto text-center px-8  shadow-xl py-8">
+        <div className="card w-11/12 mx-auto text-center px-8  shadow-xl py-8">
           <h1 className="text-3xl font-extrabold text-center  mx-auto">
             See Cars Parts
           </h1>
@@ -30,7 +30,7 @@ const Home = () => {
         </div>
       </section>
       <section className=" my-10">
-        <div class="card w-11/12 mx-auto text-center px-8 shadow-xl py-8">
+        <div className="card w-11/12 mx-auto text-center px-8 shadow-xl py-8">
           <h1 className="text-3xl font-extrabold text-center  mx-auto">
             Customer Review here
           </h1>

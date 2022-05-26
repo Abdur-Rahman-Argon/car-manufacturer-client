@@ -7,7 +7,7 @@ const SingleProduct = ({ part, index, refetch }) => {
       `Are you sure Your "${part.name}" Parts Remove?`
     );
     if (deleteConfirm) {
-      fetch(`http://localhost:5000/parts/${id}`, {
+      fetch(`https://hidden-harbor-39382.herokuapp.com/parts/${id}`, {
         method: "DELETE",
         headers: {
           authorization: `Bearer ${localStorage.getItem("accessToken")}`,
@@ -34,8 +34,8 @@ const SingleProduct = ({ part, index, refetch }) => {
       <td>
         <label
           onClick={() => removeParts(part._id)}
-          for="delete-confirm-modal"
-          class="btn btn-xs btn-error"
+          htmlFor="delete-confirm-modal"
+          className="btn btn-xs btn-error"
         >
           Remove
         </label>

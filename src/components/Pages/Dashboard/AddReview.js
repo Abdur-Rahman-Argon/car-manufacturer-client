@@ -21,7 +21,7 @@ const AddReview = () => {
       ratings: ratings,
     };
     if (email) {
-      fetch(`http://localhost:5000/review`, {
+      fetch(`https://hidden-harbor-39382.herokuapp.com/review`, {
         method: "POST",
         headers: {
           "content-type": "application/json",
@@ -31,27 +31,27 @@ const AddReview = () => {
       })
         .then((res) => res.json())
         .then((data) => {
-          console.log(data);
+          // console.log(data);
           toast.success("Thanks For Your Important Review");
           reset();
         });
     }
   };
   return (
-    <div class="card w-96 bg-base-100 shadow-xl mx-auto p-9">
+    <div className="card w-96 bg-base-100 shadow-xl mx-auto p-9">
       <h1 className="text-2xl font-bold text-center text-purple-900 my-4">
         Please Give Us Review
       </h1>
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="text-left my-3">
-          <div class="form-control w-full max-w-xs">
-            <label htmlFor="ratings" class="label">
-              <span class="label-text">Ratings</span>
+          <div className="form-control w-full max-w-xs">
+            <label htmlFor="ratings" className="label">
+              <span className="label-text">Ratings</span>
             </label>
             <select
               {...register("ratings")}
               id="ratings"
-              class="select select-bordered"
+              className="select select-bordered"
             >
               <option selected>5 Star</option>
               <option> 4.5 Star</option>
@@ -70,7 +70,7 @@ const AddReview = () => {
             {...register("name", { required: true })}
             value={`${displayName}`}
             id="name"
-            class="input input-bordered w-full max-w-xs"
+            className="input input-bordered w-full max-w-xs"
             readOnly
           />
         </div>
@@ -81,7 +81,7 @@ const AddReview = () => {
             {...register("email", { required: true })}
             value={`${email}`}
             id="email"
-            class="input input-bordered w-full max-w-xs"
+            className="input input-bordered w-full max-w-xs"
             readOnly
           />
         </div>
@@ -94,7 +94,7 @@ const AddReview = () => {
             rows="15"
             {...register("review", { required: true })}
             placeholder=" Enter Your Review"
-            class="input input-bordered w-full max-w-xs"
+            className="input input-bordered w-full max-w-xs"
           ></textarea>
           <input />
         </div>

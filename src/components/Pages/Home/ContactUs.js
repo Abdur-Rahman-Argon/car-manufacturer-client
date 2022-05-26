@@ -11,7 +11,7 @@ const ContactUs = () => {
     console.log(data);
   };
   return (
-    <div class="card w-11/12 mx-auto text-center bg-zinc-900 text-white shadow-xl py-16">
+    <div className="card w-11/12 mx-auto text-center bg-zinc-900 text-white shadow-xl py-16">
       <div>
         <h1 className="text-3xl font-bold text-emerald-500">Contact Us</h1>
       </div>
@@ -23,7 +23,7 @@ const ContactUs = () => {
             <input
               {...register("name", { required: true })}
               id="name"
-              class="input text-gray-900 font-semibold input-bordered w-full max-w-xs"
+              className="input text-gray-900 font-semibold input-bordered w-full max-w-xs"
             />
           </div>
           <div className=" my-3">
@@ -32,7 +32,7 @@ const ContactUs = () => {
             <input
               {...register("email", { required: true })}
               id="email"
-              class="input text-gray-900 font-semibold input-bordered w-full max-w-xs"
+              className="input text-gray-900 font-semibold input-bordered w-full max-w-xs"
             />
           </div>
           <div className=" my-3">
@@ -44,7 +44,7 @@ const ContactUs = () => {
               id="message"
               cols="30"
               rows="5"
-              class="input text-gray-900 font-semibold input-bordered h-20 w-full max-w-xs"
+              className="input text-gray-900 font-semibold input-bordered h-20 w-full max-w-xs"
             ></textarea>
           </div>
           <div className="  my-3">
