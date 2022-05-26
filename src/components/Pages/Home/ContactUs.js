@@ -11,7 +11,7 @@ const ContactUs = () => {
     console.log(data);
   };
   return (
-    <div class="card w-9/12 mx-auto text-center bg-zinc-900 text-white shadow-xl py-16">
+    <div class="card w-11/12 mx-auto text-center bg-zinc-900 text-white shadow-xl py-16">
       <div>
         <h1 className="text-3xl font-bold text-emerald-500">Contact Us</h1>
       </div>
