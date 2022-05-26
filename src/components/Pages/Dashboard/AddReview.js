@@ -64,7 +64,7 @@ const AddReview = () => {
         </div>
 
         <div className="text-left my-3">
-          <label htmlFor="email">Name</label>
+          <label htmlFor="name">Name</label>
           <br />
           <input
             {...register("name", { required: true })}

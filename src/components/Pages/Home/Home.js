@@ -2,6 +2,7 @@ import React from "react";
 import useParts from "../../utilites/useParts";
 import Footer from "../Sheared/Footer";
 import Banner from "./Banner";
+import ContactUs from "./ContactUs";
 import DisplayReview from "./DisplayReview";
 
 import PartsHome from "./PartsHome";
@@ -36,6 +37,10 @@ const Home = () => {
           Our Business Summary
         </h1>
         <div className=""></div>
+      </section>
+
+      <section className=" my-10">
+        <ContactUs></ContactUs>
       </section>
       <Footer></Footer>
     </div>
