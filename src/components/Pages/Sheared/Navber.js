@@ -26,10 +26,10 @@ const Navber = () => {
         </li>
       )}
       <li className="mx-2 my-2">
-        <Link to="/">Blog</Link>
+        <Link to="/blog">Blog</Link>
       </li>
       <li className="mx-2 my-2">
-        <Link to="/">About</Link>
+        <Link to="/protpholio">Protpholio</Link>
       </li>
 
       {user && (

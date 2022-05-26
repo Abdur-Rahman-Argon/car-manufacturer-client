@@ -15,14 +15,14 @@ const SingleReview = ({ reviewe }) => {
               </div>
             )}
             <div>
-              <h4 className="text-sm font-bold">{userName}</h4>
+              <h4 className=" text-xs font-bold">{userName}</h4>
             </div>
           </div>
-          <div>
-            <h1 className="text-sm font-bold">Ratings: {ratings}</h1>
+          <div className="pl-2">
+            <h1 className="text-xs font-bold">Ratings: {ratings}</h1>
           </div>
         </div>
-        <div>
+        <div className="text-left mt-3">
           <h1 className="text-sm font-bold">Review:</h1>
           <p>{review}</p>
         </div>
