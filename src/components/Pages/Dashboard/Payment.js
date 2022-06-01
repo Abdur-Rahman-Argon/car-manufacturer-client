@@ -1,6 +1,6 @@
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useQuery } from "react-query";
 import { useParams } from "react-router-dom";
 import Loading from "../Sheared/Loading";
@@ -11,52 +11,87 @@ const stripePromise = loadStripe(
 );
 
 const Payment = () => {
-  const [order, setorder] = useState([]);
-  useEffect(() => {
-    fetch(
-      "https://hidden-harbor-39382.herokuapp.com/parches/628cc2c180b02334d4d1ad4d",
-      {
-        method: "GET",
-        headers: {
-          authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-        },
-      }
-    )
-      .then((res) => res.json())
-      .then((data) => setorder(data));
-  }, []);
+  const { paymentId } = useParams();
 
-  if (order) {
-    // console.log(order);
+  const {
+    isLoading,
+    error,
+    data: order,
+    refetch,
+  } = useQuery("user", () =>
+    fetch(`https://hidden-harbor-39382.herokuapp.com/parches/${paymentId}`, {
+      method: "GET",
+      headers: {
+        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+      },
+    }).then((res) => res.json())
+  );
+
+  if (isLoading) {
+    return <Loading></Loading>;
   }
-  const paymentOrder = { order };
 
-  const { productName, ordersCountity, Price } = order;
+  // if (order) {
+  //   console.log(order);
+  // }
+
+  const { img, productName, ordersCountity, Price } = order;
 
   const totalPrice = "540000";
   const payablePrice = "5124000";
 
   return (
-    <div className="hero min-h-screen">
-      <div className="hero-content flex-col lg:flex-row-reverse">
-        <div className="w-full">
-          <Elements stripe={stripePromise}>
-            <CheckoutForm paymentOrder={paymentOrder}></CheckoutForm>
-          </Elements>
-        </div>
-        <div className="w-96">
-          <h1> {productName}</h1>
-          <h1>
-            Price : {Price}
-            <span></span>
-          </h1>
-          <h1> Orders Quantity : {ordersCountity} </h1>
-          <h1>Total Price : {totalPrice}</h1>
-          <h1>Tax : 5 % </h1>
+    <div className="">
+      <div className="hero-content flex-col">
+        <h1 className="text-2xl lg:text-4xl my-2 font-bold">
+          Please Pay For Confirm Order
+        </h1>
+        <div class="card w-10/12 my-0 p-5 md:p-16 lg:p-20 bg-base-100 shadow-xl">
+          <div>
+            <h1 className="text-xl font-semibold">
+              <span className=" text-xl lg:text-3xl font-bold">
+                {productName}
+              </span>
+            </h1>
+          </div>
+          <div class="flex flex-col lg:flex-row-reverse">
+            <div className=" lg:block hidden lg:flex-1">
+              <img src={img} alt="" className=" w-48" />
+            </div>
+            <div className="flex-1">
+              <h1 className="lg:text-xl my-2 font-semibold">
+                Price : <span className=" lg:text-2xl font-bold"> {Price}</span>
+                <span className=" text-sm text-emerald-900">
+                  (Per Single Parts)
+                </span>
+              </h1>
+              <h1 className="lg:text-xl my-2  font-semibold">
+                Orders Quantity :{" "}
+                <span className=" lg:text-2xl font-bold">{ordersCountity}</span>
+              </h1>
+              <h1 className="lg:text-xl my-2 font-semibold">
+                Total Price :
+                <span className=" ;g:text-2xl font-bold"> {totalPrice} </span>
+              </h1>
+              <h1 className="lg:text-xl my-2 font-semibold">
+                Tax : <span className=" lg:text-2xl font-bold"> 5 % </span>
+              </h1>
+            </div>
+            <div></div>
+          </div>
           <div className="divider"></div>
           <div>
-            <h1>Payable Price: {payablePrice}</h1>
+            <h1 className="text-xl lg:my-2 font-semibold">
+              Payable Price:
+              <span className="text-2xl font-bold"> {payablePrice}</span>
+            </h1>
           </div>
+        </div>
+
+        <div className="card w-10/12 p-16 bg-base-100 shadow-xl">
+          <Elements stripe={stripePromise}>
+            <CheckoutForm order={order}></CheckoutForm>
+          </Elements>
         </div>
       </div>
     </div>

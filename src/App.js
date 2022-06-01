@@ -53,7 +53,10 @@ function App() {
         >
           <Route index element={<MyOrder></MyOrder>}></Route>
           <Route path="review" element={<AddReview></AddReview>}></Route>
-          <Route path="payment/:id" element={<Payment></Payment>}></Route>
+          <Route
+            path="payment/:paymentId"
+            element={<Payment></Payment>}
+          ></Route>
           <Route path="makeadmin" element={<MakeAdmin></MakeAdmin>}></Route>
           <Route path="addproduct" element={<AddProduct></AddProduct>}></Route>
           <Route
