@@ -133,7 +133,7 @@ const Blog = () => {
           <p className="mx-8 my-3"></p>
         </div>
       </div>
-      <div className=" bg-white my-12 py-3 text-left pl-10 shadow-xl rounded-lg">
+      {/* <div className=" bg-white my-12 py-3 text-left pl-10 shadow-xl rounded-lg">
         <div className="my-3 mx-3 text-2xl">
           <h2>
             <b> Question : 6 </b> What is a unit test? Why should write unit
@@ -141,14 +141,14 @@ const Blog = () => {
           </h2>
           <p></p>
         </div>
-        <hr className="w-9/12" />
+        {/* <hr className="w-9/12" />
         <div className="mx-5 my-5">
           <p className="text-xl">
             <b className="border-b-2 border-gray-900"> Answer : </b>
           </p>
           <p className="mx-8 my-3"></p>
-        </div>
-      </div>
+        </div> 
+      </div> */}
     </div>
   );
 };

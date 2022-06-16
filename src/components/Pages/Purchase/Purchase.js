@@ -8,6 +8,7 @@ import { toast } from "react-toastify";
 const Purchase = () => {
   const [part, setPart] = useState([]);
   const [user, loading, error] = useAuthState(auth);
+  const [countity, setCountity] = useState();
   const { displayName, email } = user;
   const { partsId } = useParams();
   const uri = `https://hidden-harbor-39382.herokuapp.com/parts/${partsId}`;
@@ -15,14 +16,24 @@ const Purchase = () => {
   useEffect(() => {
     fetch(uri)
       .then((res) => res.json())
-      .then((data) => setPart(data));
+      .then((data) => {
+        setPart(data);
+
+        setCountity(parseFloat(data.minimumOrder));
+      });
   }, []);
 
   const { _id, name, img, description, Price, AvailableStock, minimumOrder } =
     part;
 
-  const [countity, setCountity] = useState(500);
+  // if (minimumOrder) {
+  //   setCountity(minimumOrder);
+  // }
 
+  const addValue = (e) => {
+    const num = e.target.value;
+    setCountity(num);
+  };
   const addPositive = () => {
     if (countity < AvailableStock) {
       const sum = countity + 1;
@@ -108,10 +119,11 @@ const Purchase = () => {
                   +
                 </button>
                 <input
-                  type="text"
+                  onChange={addValue}
+                  type="number"
+                  name="quantity"
                   value={countity}
                   className="input input-bordered input-primary w-20 mx-3 max-w-xs"
-                  readOnly
                 />
 
                 <button

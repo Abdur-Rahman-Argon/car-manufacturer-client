@@ -1,16 +1,9 @@
 import React from "react";
 const Different = () => {
   return (
-    <div
-      style={{
-        background: `url(https://i.ibb.co/QKv3FfJ/backgroun.jpg)`,
-      }}
-      className="card w-11/12 mx-auto text-center  shadow-xl py-16"
-    >
+    <div className="bg-[url('https://i.ibb.co/VM66PpT/Screenshot-642.png')] bg-cover card w-11/12 mx-auto text-center text-white  shadow-xl py-16">
       <div>
-        <h1 className="text-3xl font-bold text-blue-800 ">
-          Why We Are Different To Others?
-        </h1>
+        <h1 className="text-3xl font-bold">Why We Are Different To Others?</h1>
       </div>
       <div className="mt-16 mb-5 mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3  gap-20">
         <div className="m-1 w-52 rounded-xl pb-5 text-center bg-gray-100">

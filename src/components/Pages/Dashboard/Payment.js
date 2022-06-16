@@ -1,6 +1,6 @@
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
-import React from "react";
+import React, { useState } from "react";
 import { useQuery } from "react-query";
 import { useParams } from "react-router-dom";
 import Loading from "../Sheared/Loading";
@@ -11,6 +11,9 @@ const stripePromise = loadStripe(
 );
 
 const Payment = () => {
+  const [totalPrice, setTotalPrice] = useState(Number);
+  const [totalPayablePrice, setTotalPayablePrice] = useState(Number);
+
   const { paymentId } = useParams();
 
   const {
@@ -31,14 +34,14 @@ const Payment = () => {
     return <Loading></Loading>;
   }
 
-  // if (order) {
-  //   console.log(order);
-  // }
-
   const { img, productName, ordersCountity, Price } = order;
 
-  const totalPrice = "540000";
-  const payablePrice = "5124000";
+  const singlePrice = parseFloat(Price);
+  const countity = parseFloat(ordersCountity);
+  const totalprice = singlePrice * countity;
+  // setTotalPrice(totalprice);
+  const payablePrice = totalprice + totalprice * 0.05;
+  // setTotalPayablePrice(payablePrice);
 
   return (
     <div className="">
@@ -71,7 +74,7 @@ const Payment = () => {
               </h1>
               <h1 className="lg:text-xl my-2 font-semibold">
                 Total Price :
-                <span className=" ;g:text-2xl font-bold"> {totalPrice} </span>
+                <span className=" ;g:text-2xl font-bold"> {totalprice} </span>
               </h1>
               <h1 className="lg:text-xl my-2 font-semibold">
                 Tax : <span className=" lg:text-2xl font-bold"> 5 % </span>
@@ -90,7 +93,10 @@ const Payment = () => {
 
         <div className="card w-10/12 p-16 bg-base-100 shadow-xl">
           <Elements stripe={stripePromise}>
-            <CheckoutForm order={order}></CheckoutForm>
+            <CheckoutForm
+              order={order}
+              payablePrice={payablePrice}
+            ></CheckoutForm>
           </Elements>
         </div>
       </div>

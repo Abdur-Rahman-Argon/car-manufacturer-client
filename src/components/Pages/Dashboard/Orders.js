@@ -3,7 +3,8 @@ import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 
 const Orders = ({ order, refetch }) => {
-  const { _id, img, ordersCountity, Price, paid, productName } = order;
+  const { _id, img, ordersCountity, Price, paid, productName, transactionId } =
+    order;
 
   const removeOrder = (id) => {
     const deleteConfirm = window.confirm("Are you sure remove Your order?");
@@ -28,9 +29,9 @@ const Orders = ({ order, refetch }) => {
   };
 
   return (
-    <div className="card p-8 bg-base-100 shadow-xl m-1 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 my-5 mx-auto items-center">
+    <div className="card p-8 bg-base-100 shadow-xl m-1 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 my-5 mx-auto items-center lg:mx-2">
       <div className="w-96">
-        <img src={img} alt="" className=" w-28 mx-auto" />
+        <img src={img} alt="" className=" w-28 mx-auto lg:mx-10" />
       </div>
       <div className="w-96 mx-auto my-2">
         <div className="w-full text-center">
@@ -39,19 +40,24 @@ const Orders = ({ order, refetch }) => {
             price:{Price} <span className="text-sm">(per Pice)</span>
           </h1>
           <h1>Orders Quantity: {ordersCountity} </h1>
+          {transactionId && (
+            <h1>
+              <b>TransactionId :</b> {transactionId}
+            </h1>
+          )}
         </div>
       </div>
       <div className="w-96 my-2 text-center">
-        {Price ? (
+        {Price && !paid && (
           <Link to={`/dashboard/payment/${_id}`}>
             <button className="btn btn-active btn-primary mx-auto ">
               Pay Now
             </button>
           </Link>
-        ) : (
-          <button className="btn btn-active btn-primary mx-auto ">
-            {" "}
-            Paid{" "}
+        )}
+        {Price && paid && (
+          <button className="btn btn-active btn-success px-8 mx-auto ">
+            Paid
           </button>
         )}
       </div>

@@ -19,8 +19,8 @@ const Home = () => {
       </div>
       <section className=" my-10">
         <div className="card w-11/12 mx-auto text-center px-8  shadow-xl py-8">
-          <h1 className="text-3xl font-extrabold text-center  mx-auto">
-            See Cars Parts
+          <h1 className="text-2xl font-extrabold text-center  mx-auto">
+            LATEST PARTS HERE
           </h1>
           <div className="m-0 grid grid-cols-1 lg:grid-cols-3 gap-2">
             {cParts.map((part) => (
@@ -31,8 +31,8 @@ const Home = () => {
       </section>
       <section className=" my-10">
         <div className="card w-11/12 mx-auto text-center px-8 shadow-xl py-8">
-          <h1 className="text-3xl font-extrabold text-center  mx-auto">
-            Customer Review here
+          <h1 className="text-2xl font-extrabold text-center  mx-auto">
+            CUSTOMERS REVIEW HERE
           </h1>
 
           <DisplayReview></DisplayReview>

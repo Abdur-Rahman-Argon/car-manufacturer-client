@@ -29,7 +29,7 @@ const Navber = () => {
         <Link to="/blog">Blog</Link>
       </li>
       <li className="mx-2 my-2">
-        <Link to="/portfolio">Portfolio</Link>
+        <a href="https://abdur-rahman-3b5b4.web.app/">Portfolio</a>
       </li>
 
       {user && (

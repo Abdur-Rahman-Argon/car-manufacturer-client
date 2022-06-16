@@ -1,7 +1,7 @@
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import React, { useEffect, useState } from "react";
 
-const CheckoutForm = ({ order }) => {
+const CheckoutForm = ({ order, payablePrice }) => {
   const stripe = useStripe();
   const elements = useElements();
   const [cardError, setCardError] = useState("");
@@ -12,12 +12,21 @@ const CheckoutForm = ({ order }) => {
   // if (order) {
   //   console.log(order.Price);
   // }
-  const { userName, email } = order;
+  const {
+    _id,
+    userName,
+    email,
+    Price,
+    phoneNumber,
+    address,
+    productName,
+    ordersCountity,
+  } = order;
 
-  const price = order.Price;
+  const price = payablePrice;
 
   useEffect(() => {
-    fetch(`http://localhost:5000/create-payment`, {
+    fetch(`https://hidden-harbor-39382.herokuapp.com/create-payment`, {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -74,6 +83,30 @@ const CheckoutForm = ({ order }) => {
         setTransactionId(paymentIntent.id);
         console.log(paymentIntent);
         setSuccessPayment("Congrats! Your Payment Is Completed");
+        // payment sent database
+        const payment = {
+          transactionId: paymentIntent.id,
+          productId: _id,
+          payerEmail: email,
+          payerName: userName,
+          productName: productName,
+          payBill: Price,
+          productCountity: ordersCountity,
+          payerPhoneNumber: phoneNumber,
+          payerAddress: address,
+        };
+        fetch(`https://hidden-harbor-39382.herokuapp.com/parches/${_id}`, {
+          method: "PATCH",
+          headers: {
+            "content-type": "application/json",
+            authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+          },
+          body: JSON.stringify(payment),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            console.log(data);
+          });
       }
     }
   };
